@@ -1,0 +1,26 @@
+input {
+    background: var(--input-background-color);
+    color: var(--input-active-color);
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    line-height: 1.5;
+    width: 160px;
+    max-width: 100%;
+    padding-inline: 8px;
+
+    &::placeholder {
+        color: #687196;
+        text-align: center;
+    }
+
+    &:focus,
+    &:focus-visible {
+        color: var(--input-active-color);
+        outline: none;
+    }
+
+    &:disabled::placeholder {
+        color: var(--input-disabled-color);
+    }
+}

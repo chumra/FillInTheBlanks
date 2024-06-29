@@ -1,0 +1,17 @@
+<div ngbDropdown class="d-inline">
+  <button
+    type="button"
+    class="dropdown-button"
+    ngbDropdownToggle
+    [class.disabled]="isDisabled"
+  >
+    {{ selectedOption?.name || selectData?.placeholder }}
+  </button>
+  <div ngbDropdownMenu class="dropdown-menu">
+    @for (option of selectData?.options; track option.value) {
+      <button ngbDropdownItem (click)="select(option)">
+        {{ option.name }}
+      </button>
+    }
+  </div>
+</div>

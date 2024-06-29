@@ -1,0 +1,31 @@
+@if (formGroup) {
+  <div [formGroup]="formGroup" class="d-inline">
+    @for (item of items; track $index) {
+      @switch (item.type) {
+        @case ("text") {
+          {{ item.data }}
+        }
+        @case ("input") {
+          <app-input-text
+            [formControlName]="item.formDataPointer"
+            [placeholder]="item.placeholder"
+          ></app-input-text>
+        }
+        @default {
+          <app-options-select
+            [formControlName]="item.formDataPointer"
+            [selectData]="item"
+          />
+          @if (formGroup.get(item.formDataPointer)?.value && item.nodes) {
+            <app-dynamic-fill
+              [items]="
+                item.nodes
+                  | filterNodes: formGroup.get(item.formDataPointer)?.value
+              "
+            />
+          }
+        }
+      }
+    }
+  </div>
+}
